@@ -70,7 +70,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTFNumero" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTFNumero" min="-2" pref="43" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jBCalcular" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -102,14 +102,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFNumero">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jBCalcular">
           <Properties>
             <Property name="text" type="java.lang.String" value="Calcular"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCalcularActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>

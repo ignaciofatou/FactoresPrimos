@@ -5,6 +5,8 @@
  */
 package factoresprimos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ignacio
@@ -43,9 +45,12 @@ public class VentanaFactPrimos extends javax.swing.JFrame {
 
         jLabel2.setText("Introduzca Número");
 
-        jTFNumero.setText("jTextField1");
-
         jBCalcular.setText("Calcular");
+        jBCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCalcularActionPerformed(evt);
+            }
+        });
 
         jTAResultado.setColumns(20);
         jTAResultado.setRows(5);
@@ -62,7 +67,7 @@ public class VentanaFactPrimos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTFNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBCalcular)))
                 .addContainerGap())
@@ -104,6 +109,56 @@ public class VentanaFactPrimos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalcularActionPerformed
+
+        //Limpiamos el Text Area
+        jTAResultado.setText("");
+
+        //Comprobamos si es Numerico
+        if (isNumeric(jTFNumero.getText())) {
+            //Lo pasamos a una variable Numerica
+            int numerador = Integer.parseInt(jTFNumero.getText());
+
+            jTAResultado.append(jTFNumero.getText() + " = ");
+
+            int denominador = 2;
+            int resdivison = 0;
+
+            do {
+                if (numerador % denominador == 0.0) {
+                    resdivison = numerador / denominador;
+                    numerador = resdivison;
+                    jTAResultado.append("" + denominador + " * ");
+                } else {
+                    denominador++;
+                }
+            } while (numerador > (denominador + 1));
+
+            //Si no es primo
+            if (resdivison != 0) {
+                jTAResultado.append("" + resdivison);
+            } //Si es primo
+            else {
+                jTAResultado.append(jTFNumero.getText());
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Prueba a introducir un Número",
+                    "No es Numerico",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jBCalcularActionPerformed
+
+    private boolean isNumeric(String cadena){
+	try {
+		Integer.parseInt(cadena);
+		return true;
+	} catch (NumberFormatException nfe){
+		return false;
+	}
+    }
     /**
      * @param args the command line arguments
      */
